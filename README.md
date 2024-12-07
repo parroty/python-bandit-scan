@@ -11,12 +11,15 @@ Bandit is a tool designed to find common security issues in Python code. This ac
 To run a bandit scan include a step like this:
 
 ```yaml
-    uses: shundor/bandit-action@v1
-    with: 
+    uses: reactive-firewall/python-bandit-scan@v2.3
+        with: # optional arguments
+        # Github token of the repository (automatically created by Github)
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information.
         path: "."
-        level: high
+        level: low
         confidence: high
-        exit_zero: true           
+        # exit with 0, even with results found
+        # exit_zero: true # optional, default is DEFAULT
 ```
 
 ## Inputs
@@ -67,3 +70,6 @@ The action will create an artifact containing the sarif output.
 ## Credits
 
 - :bow: This action is based on [bandit-action](https://github.com/mdegis/bandit-action) by [Melih Değiş](https://github.com/mdegis/).
+- :bow: This action is _also_ based on [python-bandit-scan](https://github.com/shundor/python-bandit-scan) by [shundor](https://github.com/shundor).
+- :bow: This fork includes fixes proposed by [Kenta Nakase](https://github.com/parroty) and [Thiago Grisolfi](https://github.com/Grisolfi) and ["MrFired"](https://github.com/MrFired) ... 🎉 but automated by [@dependabot[bot]](https://github.com/apps/dependabot)
+
